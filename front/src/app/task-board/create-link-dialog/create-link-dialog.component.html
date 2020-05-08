@@ -1,0 +1,59 @@
+<div class="dialogContent">
+  <h1 mat-dialog-title>New relation</h1>
+  <div mat-dialog-content>
+
+    <label id="radioLabel">Relation type</label>
+
+    <mat-radio-group
+      (change)="changeRelation($event)"
+      [(ngModel)]="data.relationType"
+      aria-labelledby="radioLabel"
+      class="radioGroup"
+    >
+      <mat-radio-button *ngFor="let type of relationTypes" [value]="type" class="radioButton">
+        {{type}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="selectSprint">
+      <mat-form-field id="selectSprint">
+        <mat-label id="sprintLabel">Sprint</mat-label>
+        <mat-select (selectionChange)="sprintUpdate(selectedSprint.id)" [(value)]="selectedSprint">
+          <mat-option *ngFor="let u of allSprints"
+                      [disabled]="(data.relationType == 'Parent' && u.id!==data.item.sprintId && data.item.typeId!==1 || (data.relationType == 'Child' && u.id!==data.item.sprintId))"
+                      [value]="u">
+            {{u.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="selectItem">
+      <mat-form-field>
+        <mat-label>Item</mat-label>
+        <mat-select (selectionChange)="itemUpdated()" [(value)]="selectedItem">
+          <mat-option>None</mat-option>
+          <mat-optgroup *ngFor="let p of relatedItems" [label]="p.name">
+            <mat-option *ngFor="let item of p.items"
+                        [disabled]="(data.relationType == 'Parent' && item.typeId!==1 && data.item.typeId!==1) || (data.relationType == 'Child' && item.parentId!==null) || (data.item.id==item.id)"
+                        [value]="item">
+              <b>{{item.id}}</b>: {{item.name}}
+              -
+              <i [ngClass]="{itemStory : item.itemType.id===1,
+              itemTask : item.itemType.id==2,
+              itemBug : item.itemType.id==3,
+              itemTest: item.itemType.id==4}"
+              >({{item.itemType.name}})</i>
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button>Cancel</button>
+    <button (click)="close()" mat-button>Create</button>
+  </div>
+
+</div>

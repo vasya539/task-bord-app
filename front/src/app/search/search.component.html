@@ -1,0 +1,19 @@
+<div class="search">
+  <input 
+    class="input-filter" 
+    type="text"
+    [(ngModel)]="nameFilter"
+    (keyup)="changeFilter($event.target.value)"
+    placeholder="search"
+    required [minlength] = "minLength" 
+    #search="ngModel" 
+    name="search" 
+    autocomplete="off"> 
+  <button 
+    mat-icon-button 
+    [disabled]="!nameFilter" 
+    (click)="clearFilter()">
+    <mat-icon aria-label="Clear">highlight_off</mat-icon>
+  </button> 
+</div>     
+<mat-error *ngIf="search.errors?.minlength">Must be at least 4 characters long</mat-error>

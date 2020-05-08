@@ -1,0 +1,65 @@
+.ico {
+    width: auto;
+    margin: auto 0 auto 0;
+    padding: 0;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.letters-div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin:0;
+    padding: 0;
+    background-color: darkcyan;
+    color: white;
+    border-radius: 50%;
+}
+
+.small-ico > .letters {
+    margin-top: 1px;
+    font-size: 20px;
+}
+
+.big-ico > .letters {
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.letters {
+    margin: 0;
+    padding: 0;
+    /* margin-top: 4px; */
+    text-align: center;
+    /* font-size: 24px; */
+}
+
+img {
+    left: 0;
+    top: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.small-ico {
+    width: 40px;
+    height: 40px;
+}
+
+.big-ico {
+    width: 48px;
+    height: 48px;
+}
+
+mat-icon {
+    font-size: 48px;
+    margin: -2px 0 0 -24px;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: pointer;
+ }

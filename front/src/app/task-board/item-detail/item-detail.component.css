@@ -1,0 +1,354 @@
+.mainProperties {
+  position: relative;
+  background-color: white;
+  font-family: Roboto, serif;
+  padding: 20px 20px 20px 20px;
+  display: block;
+  width: 65%;
+  margin: auto;
+}
+
+.selectBut {
+  width: 100%;
+}
+
+.propertyText {
+  margin-left: 5px;
+}
+
+.selectButton {
+  font-size: 14px;
+}
+
+.linePanel {
+  display: inline-flex;
+}
+
+#commentNumber {
+  margin: 10px 0px 1px 20px;
+  font-size: 11px;
+}
+
+#inputDescription {
+  background-color: #efeaea4d;
+  height: 150px;
+  font-family: Roboto, sans-serif;
+  border: solid 2px transparent;
+  min-height: 150px;
+  max-height: 250px;
+  outline: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-overflow: ellipsis;
+}
+
+#inputDescription:hover {
+  border: solid 2px #2ac9c7;
+
+}
+
+#inputName {
+  background-color: #efeaea4d;
+  margin-bottom: 9px;
+  margin-top: 10px;
+  width: 100%;
+  border: solid 2px transparent;
+  outline: none;
+  font-family: Roboto, sans-serif;
+  font-size: 25px;
+  text-overflow: ellipsis;
+}
+
+#inputName:hover {
+  border: solid 2px #2ac9c7;
+}
+
+.nameBlock {
+  display: flex;
+}
+
+#itemId {
+  margin: 12px 3px 0px -16px;
+}
+
+#saveButtonLeft {
+  width: 10rem;
+  position: absolute;
+  height: 40px;
+  right: 20px;
+  top: 5.6rem;
+}
+
+.bottomPart {
+  display: flex;
+}
+
+.bottomLeft {
+  width: 75%;
+}
+
+.bottomRight {
+  width: 20%;
+  margin: 26px auto 0px auto;
+}
+
+.itemTypeName {
+  font-size: 18px;
+  padding-top: 22px;
+  margin-bottom: 18px;
+  margin-left: 3px;
+  border-bottom: solid;
+  padding-left: 10px;
+  padding-right: 12px;
+}
+
+.commentBody {
+  display: inline-block;
+  width: 529px;
+  border: groove;
+  border-radius: 9px;
+  padding: 5px 5px 0px 6px;
+  background-color: white;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.comment {
+  display: inline;
+}
+
+.commentsBlock {
+  max-width: 35rem;
+  margin-left: 14px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  border-color: #77806c;
+  border-radius: 6px;
+  border-width: 1px;
+  position: relative;
+}
+
+.userName {
+  font-size: 16px;
+  padding-right: 23px;
+  display: inline;
+  margin-left: 13px;
+  margin-bottom: 10px;
+
+}
+
+.deleteComment {
+  position: absolute;
+  right: 20px;
+  top: 1px;
+}
+
+.deleteComment:hover {
+  cursor: pointer;
+}
+
+.commentTitle {
+  display: flex;
+}
+
+#inputComment {
+  min-height: 55px;
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 540px;
+  margin-bottom: 0px;
+}
+
+.addingComment {
+  min-height: 60px;
+  background-color: white;
+  border: groove;
+  border-radius: 7px;
+}
+
+.addingComment:hover {
+  border: groove #ff9a48;
+
+}
+
+#addCommentBlock {
+  margin-left: 0px;
+}
+
+#saveCommentButton {
+  height: 33px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  text-align: center;
+  width: 60px;
+  background-color: #15c715;
+}
+
+/*TREE*/
+.itemsTree-invisible {
+  display: none;
+}
+
+.itemsTree ul,
+.itemsTree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.itemsTreeBlock {
+  position: relative;
+}
+
+.itemsTree {
+  min-width: max-content;
+  background-color: #c6ffda;
+  position: relative;
+  left: 21rem;
+  width: 50%;
+  right: 15rem;
+}
+
+.itemName {
+  cursor: pointer;
+}
+
+.nodeProperty {
+  font-size: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+.parentItem {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.childItem {
+  margin-left: 25px;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+}
+
+.relativesBlock {
+  margin: 20px 0px 15px 20px;
+  font-size: 20px;
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: blueviolet;
+  text-decoration: underline;
+}
+
+.itemStory {
+  border-color: #008e08;
+}
+
+.itemTask {
+  border-color: #f5fb00;
+}
+
+.itemBug {
+  color: red;
+}
+
+.itemTest {
+  color: darkviolet;
+}
+
+.clickableRelatedName:hover {
+  color: #0016ff;
+  cursor: pointer;
+}
+
+.storyPoints {
+  margin-top: 9px;
+  margin-right: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  height: min-content;
+  padding: 8px 5px 8px 10px;
+  background-color: #e9b004;
+}
+
+.storyPoints1 {
+  display: flex;
+}
+
+.flagIcon {
+  color: white;
+  background-color: #06cc0e;
+  margin-left: 11px;
+  border-radius: 10px;
+  margin-top: 6px;
+  padding: 4px 4px 4px 4px;
+}
+
+.storyField {
+  width: 71%;
+}
+
+.myPointIcon {
+  font-weight: 900;
+  margin: 5px 5px 5px 0;
+  font-size: 16px;
+  background-color: white;
+  padding: 1px 4px 1px 4px;
+  border-radius: 30px;
+  color: #e9b004;
+}
+
+.deleteButtonLeft {
+  width: 178px;
+  background-color: #f44336;
+}
+
+.relativesBlock {
+  margin: 20px 0px 15px 20px;
+  font-size: 20px;
+
+}
+
+.addNewLinkButton {
+  color: #265aff;
+  background-color: #d3d3d3;
+  margin: 0 0 10px 0;
+  width: 100%;
+  font-size: 15pt;
+  font-family: Roboto, sans-serif;
+}
+
+.warningButton {
+  background-color: #f44336;
+}

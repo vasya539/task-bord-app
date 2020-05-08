@@ -1,0 +1,75 @@
+table {
+  width: 150%;
+
+}
+
+.mat-column-description {
+  width: 50%;
+  font-family: inherit;
+}
+
+.mat-column-typeId {
+  width: 10%;
+  font-family: inherit;
+}
+
+.mat-column-name {
+  width: 20%;
+  font-family: inherit;
+}
+
+.mat-column-id {
+  width: 10%;
+  font-family: inherit;
+}
+
+.rightButton {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 202px;
+  height: 82px;
+  margin-right: 10px;
+}
+
+.buttonsBlock {
+  display: initial;
+  margin-top: 25px;
+}
+
+.tableBoard {
+  display: flex;
+}
+
+#archiveLink {
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+  padding: 10px 26px 10px 25px;
+  border-radius: 7px;
+  border: groove;
+  background-color: #ffffff;
+  font-family: Roboto, serif;
+}
+
+.goToArchive {
+  margin: 30px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.nameLink {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+}
+
+.nameLink:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.nameLink:visited {
+  color: black;
+  cursor: pointer;
+}

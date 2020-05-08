@@ -1,0 +1,56 @@
+tr th
+{
+  text-align:center;
+  width:250px;
+}
+tr td {
+  text-align: center;
+}
+.page 
+{
+  display:inline-block;
+}
+
+.form-help-text {
+  font-size: 12px;
+  height: 20px;
+}
+
+.form-help-text {
+  color: #ff6c6c;
+}
+
+.foreget_link {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.row{
+  margin: 10px 0;
+
+}
+
+.card-header {
+  font-size: 30px;
+}
+
+mat-card{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  width: 350px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+mat-card-actions {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+}

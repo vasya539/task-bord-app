@@ -1,0 +1,41 @@
+
+<div class="card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title id='title'>User Rename</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+    <div *ngIf="successMessage != ''" role="alert">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="apiError != ''" role="alert">
+      {{ apiError }}
+    </div>
+    
+    <form [formGroup]="editUserForm" (ngSubmit)="editUser()">
+      
+        <label  for="userName">Username</label>
+        <div >
+          <input formControlName="userName" type="text" id="userName"
+          placeholder="name">
+          <span class="form-help-text" *ngIf="editUserForm.get('userName').invalid && editUserForm.get('userName').dirty">
+            <span *ngIf="editUserForm.get('userName')['errors']['required']">Field can`t be empty.<br /></span>
+            <span *ngIf="editUserForm.get('userName')['errors']['minlength']">Enter more 3 character.</span>
+            <span *ngIf="editUserForm.get('userName')['errors']['pattern']">The field contains forbidden characters.</span>
+          </span>
+        </div>
+      
+    <mat-card-actions>
+        <div>
+          <button mat-raised-button color="primary"
+          [disabled]="editUserForm.invalid">
+          Submit
+        </button>
+      </div>
+    </mat-card-actions>
+    
+  </form>
+  </mat-card-content>
+</mat-card>
+</div>

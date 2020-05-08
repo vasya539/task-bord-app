@@ -1,0 +1,81 @@
+
+.paginationLi {
+    position:relative;
+    display: inline-block;
+    margin: 10px;
+    padding: 5px 10px;
+    background-color: #e9ecef;
+  }
+  .pagination-blue {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+  .paginationLi:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+
+  .users-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+
+  .user-table{
+    width: 80%;
+    margin: 10px auto;
+  }
+  .user-table *{
+    box-sizing: border-box;
+  }
+  .user-table-header{
+    padding: 10px 20px;
+    color: black;
+    background-color: lightgrey;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+  }
+  .table-row{
+    padding: 10px 20px;
+    display: flex;
+  }
+  .table-row:nth-child(odd){
+    background-color: rgba(236, 245, 255, 0.651);
+  }
+  .table-row:nth-child(even){
+    background-color: rgba(231, 231, 231, 0.575);
+  }
+
+  .user-email{
+    flex: 23;
+  }
+  .user-id{
+    flex: 23;
+  }
+  .user-login{
+    flex: 15;
+  }
+  .user-blocked{
+    flex: 7;
+  }
+  .user-admin{
+    flex: 7;
+  }
+  .user-name{
+    flex: 10;
+    text-align: right;
+    margin-right: 5px;
+  }
+  .user-lastname{
+    flex: 10;
+  }
+
+
+  .user-paginator{
+    width: 90%;
+    margin: 0 auto;
+  }

@@ -1,0 +1,286 @@
+<div class="dialogWindow">
+  <h1 id="titleMain" mat-dialog-title>{{title}}</h1>
+  <a *ngIf="!creating" [routerLink]="[path+ '/' + this.data.item.id]" id="moreButton" target="_blank">More</a>
+  <span>
+   <i (click)="close()" class="material-icons exitIcon" id="exitIcon">
+    close
+    </i>
+  </span>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content class="mat-typography dialogContent">
+
+    <div class="mainProperties">
+      <mat-tab-group>
+        <mat-tab id="tabContent1" label="Main">
+          <ng-template matTabContent>
+
+            <div class="leftSideDiv">
+              <input [(ngModel)]="data.item.name" [disabled]="memberService.isNotMemberOfTeam()" [maxLength]="30" id="inputName"
+                     placeholder="Enter title"
+                     type="text">
+              <h2 class="descriptionTitle">
+                <b>Description</b>
+              </h2>
+              <div class="descriptionItem">
+              <textarea [(ngModel)]="data.item.description" [disabled]="memberService.isNotMemberOfTeam()"
+                        id="inputDescription"
+                        matInput placeholder="Enter item description"></textarea>
+              </div>
+              <h2 class="descriptionTitle">
+                <b>Comments</b> ({{this.comments.length}})
+              </h2>
+              <div class="comments">
+                <div class="commentsBlock" id="addCommentBlock">
+                  <div class="addingComment">
+              <textarea [(ngModel)]="commentEnterText" [disabled]="memberService.isNotMemberOfTeam()" id="inputComment"
+                        matInput placeholder="Enter comment here..."></textarea>
+                    <button (click)="createComment()" [disabled]="memberService.isNotMemberOfTeam()" color="primary"
+                            id="saveCommentButton"
+                            mat-raised-button>Save
+                    </button>
+
+                  </div>
+                </div>
+
+                <div *ngFor="let com of comments" class="comments">
+                  <p></p>
+                  <div *ngIf="comments.length > 0" class="commentsBlock">
+                    <div class="commentHeader">
+                      <a [routerLink]="['/user/'+com.user.userName]" class="clickableName userName"
+                         target="_blank">{{com.user.userName}}</a>
+                      <span class="commentTime">{{getDate(com.date)}}</span>
+                      <i (click)="deleteComment(com.id)" *ngIf="memberService.isMemberOfTeam()"
+                         class="material-icons deleteComment">
+                        delete_forever
+                      </i>
+                    </div>
+                    <div class="commentBody">
+                      <p>
+                        {{com.text}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="rightSideDiv">
+          <span class="progressBar">
+            <mat-spinner *ngIf="!saved" diameter="30" mode="indeterminate"></mat-spinner>
+          </span>
+              <span class="progressBar">
+            <i *ngIf="!ok" class="material-icons done">
+              done
+            </i>
+                <span *ngIf="someError" class="material-icons done">
+                error
+                  </span>
+          </span>
+              <button (click)="update()" *ngIf="!creating" [disabled]="memberService.isNotMemberOfTeam()"
+                      color="primary" id="saveButtonLeft"
+                      mat-raised-button>Save
+              </button>
+
+              <h2 id="detailsRight"><b>Details</b></h2>
+              <div class="assignedUserRight">
+                <mat-form-field
+                  *ngIf="(memberService.currentMember.role.id==1 || memberService.currentMember.role.id==2); else userChief">
+                  <mat-label>Assigned user</mat-label>
+                  <mat-select [(value)]="selectedUser">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let u of userList" [value]="u">
+                      <b>{{u.userName}}</b>: {{u.role.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <ng-template #userChief>
+                  <mat-form-field *ngIf="memberService.isMemberOfTeam(); else isObserver">
+                    <mat-label>Assigned user</mat-label>
+                    <mat-select [(value)]="selectedUser">
+                      <mat-option *ngIf="selectedUser!=undefined; else userUndefined"
+                                  [value]="selectedUser">{{selectedUser.userName}}
+                        : {{selectedUser.role.name}}</mat-option>
+                      <ng-template #userUndefined>
+                        <mat-option>None</mat-option>
+                        <mat-option [value]="memberService.currentMember">{{memberService.currentMember.userName}}
+                          : {{memberService.currentMember.role.name}}</mat-option>
+                      </ng-template>
+                    </mat-select>
+                  </mat-form-field>
+                  <ng-template #isObserver>
+                    <p *ngIf="data.item.user!=null; else undefinedForObserver">Assigned
+                      user: {{data.item.user.userName}} </p>
+                    <ng-template #undefinedForObserver>
+                      <p>Assigned user: None </p>
+                    </ng-template>
+                  </ng-template>
+                </ng-template>
+              </div>
+              <div class="itemStatusRight">
+                <mat-form-field>
+                  <mat-label>State</mat-label>
+                  <mat-select [(value)]="selectedStatus" [disabled]="memberService.isNotMemberOfTeam()">
+                    <mat-option *ngFor="let s of statuses" [value]="s">
+                      {{s.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngIf="creating" class="itemParentRight">
+                <mat-form-field>
+                  <mat-label>Parent</mat-label>
+                  <mat-select [(value)]="parent" [disabled]="selectedType.id===1|| memberService.isNotMemberOfTeam()">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let p of parents" [value]="p">
+                      {{p.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="storyPoints">
+                <span class="material-icons flagIcon">
+
+                  grade
+                  </span>
+                <mat-form-field *ngIf="data.item.storyPoint!=null; else var2" class="storyField">
+                  <mat-label>Story points</mat-label>
+                  <input (change)="storyPointsChange($event)" [disabled]="memberService.isNotMemberOfTeam()"
+                         [valueAsNumber]="data.item.storyPoint"
+                         matInput placeholder="Enter points..." type="number">
+
+                </mat-form-field>
+                <ng-template #var2>
+                  <mat-form-field class="storyField">
+                    <mat-label>Story points</mat-label>
+                    <input (change)="storyPointsChange($event)" [disabled]="memberService.isNotMemberOfTeam()" matInput
+                           placeholder="Enter points..." type="number" value="Undefined">
+                  </mat-form-field>
+                </ng-template>
+              </div>
+              <div *ngIf="creating">
+                <mat-form-field>
+                  <mat-label>Type</mat-label>
+                  <mat-select [(value)]="selectedType" [disabled]="memberService.isNotMemberOfTeam()">
+                    <mat-option *ngFor="let u of itemTypes" [value]="u">
+                      {{u.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <button (click)="archive()" *ngIf="!creating" [disabled]="!memberService.isOwnerOrMaster()"
+                      [ngStyle]="{'background-color': '#f44336'}"
+                      class="deleteButtonLeft"
+                      mat-raised-button>
+                Archive
+              </button>
+
+              <button (click)="update()" *ngIf="creating" class="deleteButtonLeft" color="warn" id="createButton"
+                      mat-raised-button>
+                Create
+              </button>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab [disabled]="creating" label="Relatives">
+          <ng-template matTabContent>
+            <div class="relativesBlock">
+              <div class="newLinkBlock">
+                <button (click)="openAddLinkDialog()" class="addNewLinkButton" mat-button>Add new</button>
+              </div>
+
+              <div class="child">
+                <div (click)="toogleChild()" [(ngModel)]="this.data.item" class="parentItem" name="fieldName"
+                     ngDefaultControl>
+                  <span><b>Childs</b> ({{childs.length}})</span>
+                </div>
+                <div *ngIf="hideChild" class="childsBlock">
+                  <ejs-treegrid [dataSource]="childs" [treeColumnIndex]="1" childMapping="items">
+                    <e-columns>
+                      <e-column field="id" headerText="Id" width="100"></e-column>
+                      <e-column field="name" headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name" width="300">
+                        <ng-template #template let-data>
+                          <a (click)="goToItem(data.id)" class="clickableRelatedName">{{data.name}}</a>
+                        </ng-template>
+                      </e-column>
+                      <e-column field="status.name" headerText="Status"></e-column>
+                      <e-column field="itemType.name" headerText="Type"></e-column>
+                      <e-column headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete" width="150">
+                        <ng-template #template let-data>
+                          <button (click)="deleteRelation(data.id,'Child')" class="warningButton" color="accent"
+                                  mat-flat-button>Remove
+                          </button>
+                        </ng-template>
+                      </e-column>
+
+                    </e-columns>
+                  </ejs-treegrid>
+                </div>
+              </div>
+
+              <div class="child">
+                <div (click)="toogleRelatives()" [(ngModel)]="this.data.item" class="parentItem" name="fieldName"
+                     ngDefaultControl>
+                  <span><b>Related</b> ({{relatedItems.length}})</span>
+                </div>
+                <div *ngIf="hideRelatives" class="childsBlock">
+                  <ejs-treegrid [dataSource]="relatedItems" [treeColumnIndex]="1" childMapping="subtasks">
+                    <e-columns>
+                      <e-column field="id" headerText="Id" width="100"></e-column>
+                      <e-column field="name" headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name" width="300">
+                        <ng-template #template let-data>
+                          <a (click)="goToItem(data.id)" class="clickableRelatedName">{{data.name}}</a>
+                        </ng-template>
+                      </e-column>
+                      <e-column field="status.name" headerText="Status"></e-column>
+                      <e-column field="itemType.name" headerText="Type"></e-column>
+                      <e-column headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete" width="150">
+                        <ng-template #template let-data>
+                          <button (click)="deleteRelation(data.id,'Related')" class="warningButton" color="accent"
+                                  mat-flat-button>Remove
+                          </button>
+                        </ng-template>
+                      </e-column>
+                    </e-columns>
+                  </ejs-treegrid>
+                </div>
+              </div>
+
+              <div class="child">
+                <div (click)="toogleParent()" [(ngModel)]="this.data.item" class="parentItem" name="fieldName"
+                     ngDefaultControl>
+                  <span><b>Parent</b> ({{realParent.length}})</span>
+                </div>
+                <div *ngIf="hideParent" class="childsBlock">
+                  <ejs-treegrid [dataSource]="realParent" [treeColumnIndex]="1" childMapping="subtasks">
+                    <e-columns>
+                      <e-column field="id" headerText="Id" width="100"></e-column>
+                      <e-column field="name" headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name" width="300">
+                        <ng-template #template let-data>
+                          <a (click)="goToItem(data.id)" class="clickableRelatedName">{{data.name}}</a>
+                        </ng-template>
+                      </e-column>
+                      <e-column field="status.name" headerText="Status"></e-column>
+                      <e-column field="itemType.name" headerText="Type"></e-column>
+                      <e-column headerText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete" width="150">
+                        <ng-template #template let-data>
+                          <button (click)="deleteRelation(data.id,'Parent')" class="warningButton" color="accent"
+                                  mat-flat-button>Remove
+                          </button>
+                        </ng-template>
+                      </e-column>
+                    </e-columns>
+                  </ejs-treegrid>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+  </mat-dialog-content>
+
+</div>

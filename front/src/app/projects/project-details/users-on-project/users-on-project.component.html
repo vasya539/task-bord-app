@@ -1,0 +1,77 @@
+<div class="container">
+    <div *ngFor="let up of usersOnProject">
+        <div class="user-on-project">
+            <app-user [user]='up.user'></app-user>
+            <ng-container *ngIf="access">
+                <ng-container *ngIf="up.userRoleId === 1; else isOwner">
+                    <mat-icon disabled class="but-x but-x-disabled">highlight_off</mat-icon>
+                </ng-container>
+                <ng-template #isOwner>
+                    <mat-icon class="but-x" (click)="deleteUserFromProject(up)">
+                        highlight_off</mat-icon>
+                </ng-template>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="access">
+            <div class="role">
+                <ng-container *ngIf="up.userRoleId === 1; else elseBlock">
+                    <mat-select disabled [value]=1>
+                        <mat-option [value]=1>Owner</mat-option>
+                    </mat-select>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <mat-select (ngModelChange)="onRoleChange($event, up)" [(ngModel)]="up.userRoleId">
+                        <mat-option [value]=2 [disabled]="isScrumMaster">Scrum Master</mat-option>
+                        <mat-option [value]=3>Developer</mat-option>
+                        <mat-option [value]=5>Observer</mat-option>
+                    </mat-select>
+                </ng-template>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-container *ngIf="access">
+    <div class="btn-add">
+        <ng-container *ngIf="!showAddUser; else cancelBtn">
+            <button mat-raised-button color="primary" (click)="showAddUser = true">
+                Add User
+            </button>
+        </ng-container>
+        <ng-template #cancelBtn>
+            <button mat-raised-button color="warn" (click)="cancelLoadUsers()">
+                Cancel
+            </button>
+        </ng-template>
+    </div>
+    <mat-action-list class="add-user-container" *ngIf="showAddUser">
+        <div class="users">
+            <mat-icon class="but-x" (click)="cancelLoadUsers()">highlight_off</mat-icon>
+            <app-search class="search" *ngIf=showAddUser (oneChangeNameFilter)='search($event)'>
+            </app-search>
+            <ng-container *ngIf="!users.length && nameFilter.length >= 4 + countMarkSpace">
+                Users Not found
+            </ng-container>
+            <div *ngFor="let user of users">
+                <div class="user-container">
+                    <mat-list-item class="user-item" (click)='showAddUserForm(user)'>
+                        <app-user [user]='user'></app-user>
+                        <span class="user-filter-mark">
+                            <span [innerHTML]="user.firstName | highlight: nameFilter"></span> &nbsp;&nbsp;
+                            <span [innerHTML]="user.lastName | highlight: nameFilter"></span> &nbsp;&nbsp;
+                            <span [innerHTML]="user.userName | highlight: nameFilter"></span>
+                        </span>
+                    </mat-list-item>
+                </div>
+            </div>
+            <ng-container *ngIf="hasNext">
+                <mat-list-item (click)="loadUsers()"><span> Show more users...</span></mat-list-item>
+            </ng-container>
+        </div>
+    </mat-action-list>
+    <ng-container *ngIf='showForm'>
+        <app-add-user-to-project-form [projectId]='projectId' [user]='currentUser' [isScrumMaster]='isScrumMaster'
+            (addedUserToProject)="addUserToProject($event)" (canceled)="cancelForm()">
+        </app-add-user-to-project-form>
+    </ng-container>
+</ng-container>

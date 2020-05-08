@@ -1,0 +1,90 @@
+<div (cdkDropListDropped)="drop($event)"
+     *ngIf="memberService.isMemberOfTeam();else nonMember"
+     [cdkDropListData]="items"
+     cdkDropList
+     class="list-items"
+
+>
+  <div class="exampleReceiving"></div>
+
+  <div (cdkDragStarted)="clicked($event) "
+       *ngFor="let item of items"
+       [ngClass]="{'list-box':true, l1: true, myItem: item.assignedUserId==itemService.loginedUser.id}"
+       cdkDrag
+       class="list-box l1">
+    <p class="nameBlock">
+      {{item.id}}. <b (click)="openPropertiesDialog(item)" class="clickableName"> {{item.name}}</b>
+
+    </p>
+    <div>
+      <div class="bottomInfo">
+        <div [ngClass]="{itemStory : item.itemType.id===1,
+              itemTask : item.itemType.id==2,
+              itemBug : item.itemType.id==3,
+              itemTest: item.itemType.id==4}" class="itemType">
+          <b class="typeName">{{item.itemType.name}}</b>
+        </div>
+        <div *ngIf="item.storyPoint!=null" class="storyPoins">
+
+          <span class="myPointIcon">P</span>
+
+          <span class="storyPointOne">{{item.storyPoint}}</span>
+
+        </div>
+
+        <div *ngIf="item.assignedUserId!==null; else userUnset" class="assignedUserName">
+          <a [routerLink]="['/user/'+item.user.userName]" class="clickableUserName"
+             target="_blank">{{item.user.userName.substring(0, 12)}}</a>
+        </div>
+        <ng-template #userUnset>
+          <div class="notAssignedUserName"><b class="notUserName">None</b>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #nonMember>
+  <div
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListData]="items"
+    cdkDropList
+    class="list-items"
+  >
+    <div class="exampleReceiving"></div>
+
+    <div
+      *ngFor="let item of items"
+      [ngClass]="{'list-box':true, l1: true, myItem: item.assignedUserId==itemService.loginedUser.id}"
+      class="list-box l1">
+      <p class="nameBlock">
+        {{item.id}}. <b (click)="openPropertiesDialog(item)" class="clickableName"> {{item.name}}</b>
+
+      </p>
+      <div>
+        <div class="bottomInfo">
+          <div [ngClass]="{itemStory : item.itemType.id===1,
+              itemTask : item.itemType.id==2,
+              itemBug : item.itemType.id==3,
+              itemTest: item.itemType.id==4}" class="itemType">
+            <b class="typeName">{{item.itemType.name}}</b>
+          </div>
+          <div *ngIf="item.storyPoint!=null" class="storyPoins">
+          <span class="material-icons flagIcon">
+            grade
+          </span>
+            <span class="storyPointOne">{{item.storyPoint}}</span>
+          </div>
+          <div *ngIf="item.assignedUserId!==null; else userUnset" class="assignedUserName">
+            <a [routerLink]="['/user/'+item.user.userName]" class="clickableUserName"
+               target="_blank">{{item.user.userName}}</a>
+          </div>
+          <ng-template #userUnset>
+            <div class="notAssignedUserName"><b class="notUserName">None</b>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

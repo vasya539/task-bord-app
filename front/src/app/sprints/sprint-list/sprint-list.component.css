@@ -1,0 +1,38 @@
+h2.warn {
+    margin: 10px;
+    color: red;
+}
+h2 {
+  text-align: center;
+  margin: 10px;
+  color: black;
+}
+#table {
+  height: 77%;
+  margin: 0 4px;
+}
+
+mat-icon {
+  vertical-align: middle;
+  user-select: none;
+}
+.userStory {
+  color: rgb(20, 20, 209);
+}
+.task {
+  color: rgb(231, 210, 19);
+}
+.bug {
+  color: rgb(194, 32, 32);
+}
+.test {
+  color: rgb(127, 12, 161);
+}
+
+a {
+  cursor: pointer;
+}
+a:hover {
+  color: rgb(20, 20, 209);
+  text-decoration: underline;
+}

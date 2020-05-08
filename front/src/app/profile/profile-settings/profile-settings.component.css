@@ -1,0 +1,162 @@
+mat-card {
+    display: block;
+    width: 60%;
+    min-width: 450px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+mat-card-header {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+mat-card-content {
+    margin-bottom: 0;
+}
+
+table {
+    width: 60%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+mat-card-actions {
+    align-content: center;
+    margin-top: 0;
+    padding: 0;
+}
+
+#spinner-div {
+    height: 40px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+mat-spinner {
+    margin: 0 auto;
+    padding: 0;
+}
+
+#confirmation-div {
+    width: 100%;
+    padding: 0 auto;
+    margin-top: 15px;
+}
+
+.mff {
+    margin-top: 20px;
+}
+
+.name-field {
+    width: 180px;
+    margin: 0 20px;
+    margin-top: 5px;
+}
+
+.email-field {
+    width: 180px;
+    margin: 0 20px;
+    margin-top: 5px;
+}
+
+.info-field {
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+}
+
+#left-settings-fields {
+    width: 220px;
+}
+
+.rounded-border {
+    border: #673ab7 1px solid;
+    border-radius: 5px;
+    width: 160px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.canvas-ava-div {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    width: 102px;
+    height: 102px;
+}
+
+.canvas-ava-div > img {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    border: black 1px solid;
+}
+
+.canvas-ava-div > canvas {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    border: black 1px solid;
+}
+
+.canvas-ava-div > mat-spinner {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 31px;
+    top: 31px;
+}
+
+#avatar-form {
+    display: flex;
+}
+
+#ava-btns-div {
+    margin-top: 10px;
+    height: 100px;
+    padding: 0;
+}
+
+#avatar-form button {
+    /* margin: 0; */
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+#avatar-form button mat-icon {
+    margin-top: -6px;
+}
+
+#ava-frm-mdl-btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#file-selector {
+    display: none;
+}
+
+#ps-canvas {
+    border: black 1px solid;
+}
+
+
+#td-about-info {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#more-but-div {
+    text-align: center;
+}
+
+#more-button {
+    margin: 10px auto;
+}

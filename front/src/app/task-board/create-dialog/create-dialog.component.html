@@ -1,0 +1,37 @@
+<div class="dialogContent">
+  <h1 mat-dialog-title>New item</h1>
+  <div mat-dialog-content>
+
+    <div class="enterNameField">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="data.name" matInput placeholder="Enter item name" [maxLength]="30">
+      </mat-form-field>
+    </div>
+
+    <div class="enterDescriptionArea">
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea [(ngModel)]="data.description" id="inputDescription" matInput
+                  placeholder="Enter item description"></textarea>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select [(value)]="data.itemType">
+        <mat-option *ngFor="let u of allTypes" [value]="u">
+          {{u.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button>Cancel</button>
+    <button [mat-dialog-close]="[data.name,data.description,data.itemType.id]" cdkFocusInitial id="createButton"
+            mat-button>Ok
+    </button>
+
+  </div>
+</div>

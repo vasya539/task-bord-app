@@ -1,0 +1,65 @@
+<div *ngIf="loaded" class="users-list">
+
+  <!-- <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th style="width:33%">Email</th>
+        <th>Admin</th>
+        <th>Info</th>
+        <th>Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="user-item" *ngFor="let user of userPage.items; let i = index">
+        <td class="text-muted" style="transform: rotate(0);">
+          {{user.email}}
+          <a [routerLink]="['/admin/users', user.id]" class="stretched-link"></a>
+        </td>
+        <td style="transform: rotate(0);">
+         <div [hidden]="rolesMap[user.id]" class="spinner-border spinner-border-sm text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <i *ngIf="rolesMap[user.id] == 'Administrator'" class="fas fa-star" style="color:goldenrod" title="Administrator"></i>
+          <a [routerLink]="['/admin/users', user.id]" class="stretched-link"></a>
+        </td>
+        <td class="d-flex justify-content-start" style="transform: rotate(0);">
+          <a [routerLink]="['/admin/users', user.id]" class="stretched-link mr-2">{{user.userName}}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+
+<div class="user-table">
+  <div class="user-table-header">
+    <div class="user-email">Email</div>
+    <div class="user-admin">Is Admin</div>
+    <div class="user-blocked">Is Blocked</div>
+    <div class="user-login">Login</div>
+    <div class="user-id">ID</div>
+    <div class="user-name">First Name</div>
+    <div class="user-lastname">Last Name</div>
+  </div>
+  <div class="user-table-body" >
+    <div class="table-row" *ngFor="let user of userPage.items; let i = index">
+      <div class="user-email" >{{user.email}}</div>
+      <div class="user-admin">
+        <span  *ngIf="adminsRolesMap[user.id] == 'Administrator'"  style="color:goldenrod" title="Administrator">Admin</span>
+      </div>
+      <div class="user-blocked"><span style="color:red;" *ngIf="usersRolesMap[user.id] != 'User'">Blocked</span></div>
+      <div class="user-login"><a [routerLink]="['/admin/users', user.id]">{{user.userName}}</a></div>
+      <div class="user-id">{{user.id}}</div>
+      <div class="user-name">{{user.firstName}}</div>
+      <div class="user-lastname">{{user.lastName}}</div>
+    </div>
+  </div>
+  <div class="user-table-footer"></div>
+</div>
+
+
+
+  <nav aria-label="Page navigation" class="user-paginator">
+    <ul class="pagination">
+      <li class="paginationLi page-item page-link" *ngFor="let p of this.ArrayTotalPages; let i=index" (click)="getUserPages(i+1,pageSize)">{{i+1}}</li>
+    </ul>
+  </nav>
+</div>

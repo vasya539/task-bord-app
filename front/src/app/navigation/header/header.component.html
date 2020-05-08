@@ -1,0 +1,55 @@
+<div class="myContainer">
+  <mat-toolbar color="primary" class="myToolbar">
+    <button ngDefaultControl class="navButton" [(ngModel)]="opened" (click)="sidenav.toggle()" >
+      <mat-icon class="menu-icon">menu</mat-icon>
+    </button>   
+    <a (click)='goHome()' class="menu-button"> 
+      <img class="logo" alt="board" src="/assets/images/boardApp.png" width="75" height="50">
+      <h1 class="mat-title appName">Board Application</h1>
+    </a> 
+      <button mat-flat-button color='primary' [matMenuTriggerFor]="menu" *ngIf='displayUserMenu' id='logined-user-ico-button' disableRipple=true>
+      <app-user-ico [user]='loginedUser' [small]='false' [disableLink]='true'></app-user-ico>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)='goHome()'>
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)='goToSettings()'>
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button *ngIf="IsAdmin()" mat-menu-item (click)='goToAdminCabinet()'>
+        <mat-icon>dashboard</mat-icon>
+        <span>Admin Cabinet</span>
+      </button>
+      <button mat-menu-item (click)='logout()'>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Log out</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="myAppSidenav">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="mySidenavCont" fixedTopGap="56">
+      <mat-nav-list>
+        <h3 class="mat-title project-title" >{{project ? project.name : 'Unselected'}}</h3>
+        <mat-divider id="mainDivider"></mat-divider>
+
+        <a mat-list-item (click)='goHome()' ><mat-icon>dns</mat-icon> Overview</a>
+        <mat-divider></mat-divider>
+        <div *ngIf="displayDetails">
+          <a mat-list-item (click)="goToDetails()" ><mat-icon>assignment</mat-icon> Details</a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="goToBoard()" ><mat-icon>view_column</mat-icon> Board</a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="goToSprint()"> <mat-icon>autorenew</mat-icon> Sprints</a>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

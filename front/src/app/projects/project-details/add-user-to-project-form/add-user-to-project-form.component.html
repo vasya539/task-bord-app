@@ -1,0 +1,19 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit(selectFormControl.value)">
+        <app-user [user] = 'user'></app-user>
+
+        <mat-form-field >
+            <mat-label>Select role for user</mat-label>
+            <mat-select matNativeControl [formControl]="selectFormControl" required>
+                <mat-option [value]='2' [disabled]='isScrumMaster'>ScrumMaster</mat-option>
+                <mat-option [value]='3'>Developer</mat-option>
+                <mat-option [value]='5'>Observer</mat-option>
+            </mat-select>
+            <mat-error *ngIf="selectFormControl.hasError('required')">Please choose role for user</mat-error>     
+        </mat-form-field>
+        <div class="buttons">
+            <button mat-raised-button color="primary" [disabled]="!selectFormControl.value"  type="submit"> Add user</button>
+            <button mat-raised-button color="warn" (click) = "onCancel()" type="button"> Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<div *ngIf="loaded  && memberService.allLoaded" [ngClass]="{'blured':blured}" cdkDropListGroup class="board">
+  <div class="buttonAndSprints">
+    <div class="selectButton" class="addButtonLeft">
+      <span (click)="refresh()" [matTooltip]="'Refresh'" class="material-icons" id="refreshButton"
+      >refresh
+      </span>
+      <button (click)="openCreateDialog()" [disabled]="memberService.isNotMemberOfTeam()" [matTooltip]="'Add new item'"
+              class="createButton"
+              mat-flat-button>+
+      </button>
+    </div>
+    <div class="selectButton">
+      <mat-form-field id="selectSprint">
+        <mat-label id="sprintLabel">Sprint</mat-label>
+        <mat-select (selectionChange)="changeSprint(selectedSprint)" [(value)]="selectedSprint">
+          <mat-option *ngFor="let u of allSprints" [routerLink]="['../../' + u.id+ '/board']" [value]="u">
+            {{u.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="goToArchive">
+      <a [routerLink]="['../archived']" id="archiveLink">Archive</a>
+
+    </div>
+    <div class="roleReminder">
+      <b>{{this.memberService.currentMember.role.name}}</b>
+    </div>
+  </div>
+  <div class="stories">
+    <div *ngFor="let story of userStories" class="userStories">
+      <app-story [story]="story"></app-story>
+    </div>
+    <div *ngIf="(changed%2)===1;else unset">
+      <div class="userStories">
+        <app-story [story]="nullStory"></app-story>
+      </div>
+    </div>
+    <ng-template #unset>
+      <app-story [story]="nullStory"></app-story>
+    </ng-template>
+  </div>
+</div>

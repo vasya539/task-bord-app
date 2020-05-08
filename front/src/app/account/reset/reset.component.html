@@ -1,0 +1,42 @@
+<mat-card class="reset-card">
+    <div *ngIf="!isParamsExist" class="alert alert-danger" role="alert">
+      Cannot reset password, wrong url params
+    </div>
+    
+    <mat-card-header>
+      <mat-card-title id='title'>Reset password</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="resetForm" (ngSubmit)="reset()">
+        
+        <div>
+          <mat-form-field>
+            <input placeholder="Password"  formControlName="password" type="password" [ngClass]="{'ng-invalid':resetForm.hasError('notSame')}"
+            id="password">
+
+            <span *ngIf="resetForm.get('password').invalid && resetForm.get('password').dirty">
+              <span *ngIf="resetForm.get('password')['errors']['required']">Field can`t be empty.</span>
+            </span>
+          </mat-form-field>
+        </div>
+        
+        <div >
+          <mat-form-field>
+            <input placeholder="Confirm Password" formControlName="confirmPassword" type="password" [ngClass]="{'ng-invalid':resetForm.hasError('notSame')}"
+            id="confirmPassword">
+
+            <span class="form-help-text" *ngIf="resetForm.hasError('notSame') && resetForm.get('confirmPassword').dirty">
+              <span *ngIf="resetForm.hasError('notSame')">Passwords don`t match.</span>
+            </span>
+          </mat-form-field>
+        </div>
+        
+          <div>
+            <button  mat-raised-button color="primary" type="submit" class="btn btn-primary"
+            [disabled]="resetForm.invalid || !isParamsExist">Reset</button>
+          </div>
+        
+      </form>
+  </mat-card-content>
+</mat-card>

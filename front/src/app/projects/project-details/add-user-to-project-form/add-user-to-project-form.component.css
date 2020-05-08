@@ -1,0 +1,24 @@
+.form-container {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+}
+form {
+    padding: 2em;
+    border-radius: 0.25em;
+    background: #f4f4f4;
+}
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+button {
+    margin-left: 10px;
+}

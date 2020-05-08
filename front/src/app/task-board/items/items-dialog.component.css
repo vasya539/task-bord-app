@@ -1,0 +1,17 @@
+/*.example-full-width{*/
+/*  border-top: none;*/
+/*  background-color: whitesmoke;*/
+/*}*/
+.matInputForm {
+  background-color: whitesmoke;
+}
+
+.paramList {
+  padding: 0px 0px 1px 5px;
+  margin: 5px 0px 0px 0px;
+  list-style-type: none;
+}
+
+.mat-form-field-wrapper {
+  background-color: chartreuse;
+}

@@ -1,0 +1,41 @@
+<div *ngIf="story.name!=='null'; else unset" cdkDropListGroup class="board">
+
+  <div class="story">
+    <a (click)="openDialog()">
+      <div class="storyTitle">
+        {{story.id}}. {{story.name}}
+      </div>
+    </a>
+    <div *ngIf="story.assignedUserId!==null; else uUnset" class="assignedUserName">
+      <a [routerLink]="['/user/'+story.user.userName]" class="clickableUserName"
+         target="_blank">{{story.user.userName}}</a>
+    </div>
+
+    <ng-template #uUnset>
+      <div class="notAssignedUserName">
+        <b id="notUserName">None</b>
+      </div>
+    </ng-template>
+    <div *ngIf="story.storyPoint!=null" class="storyPoins">
+          <span class="material-icons flagIcon">
+            grade
+</span>
+      <span class="storyPointOne">{{story.storyPoint}}</span>
+    </div>
+  </div>
+  <div *ngFor="let s of statuses">
+    <app-column [StatusId]="s.id" [columnTitle]="s.name" [parentId]="story.id"></app-column>
+
+  </div>
+
+</div>
+<ng-template #unset>
+  <div cdkDropListGroup class="board">
+    <div class="story unParented">
+      Unparented
+    </div>
+    <div *ngFor="let s of statuses">
+      <app-column [StatusId]="s.id" [columnTitle]="s.name" [parentId]="null"></app-column>
+    </div>
+  </div>
+</ng-template>

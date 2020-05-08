@@ -1,0 +1,11 @@
+mat-form-field, h1 {
+    display: block;
+    margin: auto 20px;
+}
+h3 {
+    margin: auto 20px;
+}
+.mat-raised-button {
+    margin: 4px 8px;
+    border: 1px solid #333;
+}

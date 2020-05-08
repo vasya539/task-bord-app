@@ -1,0 +1,51 @@
+#user-info-card, #projects-container {
+    width: 60%;
+    margin: 15px auto;
+}
+
+#avatar {
+    border-radius: 50%;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.project-card {
+    width: 200px;
+    height: 80px;
+    margin: 5px 10px;
+    padding: 5px;
+}
+
+.project-card-content {
+    padding: 5px;
+}
+
+.proj-desc {
+    text-indent: 5px;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 35px;
+}
+
+#projects-button {
+    margin: 0 10px 25px auto;
+}
+
+.proj-header-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: -20px;
+}

@@ -1,0 +1,17 @@
+.comp {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    background-color: teal;
+    list-style-type: none;
+    padding: 7px;
+    border-radius: 8px;
+    /*width: 220px;*/
+}
+
+li {
+    margin: 1px;
+}

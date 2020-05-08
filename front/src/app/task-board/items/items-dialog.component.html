@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>New item</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="data.name">
+      <!--      placeholder="Enter item name"-->
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="data.description" placeholder="Enter item description"></textarea>
+    </mat-form-field>
+  </p>
+  <!--  <p>-->
+  <!--    <mat-form-field appearance="fill">-->
+  <!--      <mat-label>Status</mat-label>-->
+  <!--      <mat-select [(value)]="status" [(ngModel)]="data.status" >-->
+  <!--        <mat-option value="1">New</mat-option>-->
+  <!--        <mat-option value="2">Active</mat-option>-->
+  <!--        <mat-option value="1002">CodeReview</mat-option>-->
+  <!--        <mat-option value="1003">Resolved</mat-option>-->
+  <!--        <mat-option value="1004">Closed</mat-option>-->
+
+  <!--      </mat-select>-->
+  <!--    </mat-form-field>-->
+  <!--  </p>-->
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="[data.name,data.description]" cdkFocusInitial>Ok</button>
+  <!--  <button mat-button (click)="show()">SHOW</button>-->
+
+
+  <!--  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>-->
+</div>

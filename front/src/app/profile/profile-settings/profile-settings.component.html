@@ -1,0 +1,102 @@
+<div *ngIf='formGroup == null' id='spinner-div'>
+    <mat-spinner diameter='40'></mat-spinner>
+</div>
+
+<mat-card *ngIf='formGroup != null'>
+
+    <mat-card-header>
+        <mat-card-title id='title'>Change settings</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form [formGroup]="formGroup" class="form">
+            <table>
+                <tr>
+                    <td>
+                        <div id='left-settings-fields'>
+                            <mat-form-field class='name-field'>
+                                <input matInput placeholder="First Name" formControlName="firstName">
+                                <mat-error *ngIf="!formGroup.controls['firstName'].valid && formGroup.controls['firstName'].touched">
+                                    {{ requiredFieldErrorMessage }}
+                                    </mat-error>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class='name-field'>
+                                <input matInput placeholder="Last Name" formControlName="lastName">
+                                <mat-error *ngIf="!formGroup.controls['lastName'].valid && formGroup.controls['lastName'].touched">
+                                    {{ requiredFieldErrorMessage }}
+                                    </mat-error>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="email-field">
+                                <input matInput placeholder="e-mail" formControlName="email">
+                                <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+                                {{ getErrorEmail() }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </td>
+                    <td>
+                        <div class='rounded-border'>
+                            <form *ngIf='user != null' id='avatar-form'>
+                                <input id='file-selector' type='file' accept='image/*' (change)='onFileChanged($event)' #fileSelector>
+                                <div class='canvas-ava-div'>
+                                    <img id='curr-ava' *ngIf='user.avatarTail != null' src='{{getAvaPath()}}' alt='avatar' onerror="this.hidden = true">
+                                    <canvas width="100" height="100" id='ps-canvas'></canvas>
+                                    <mat-spinner diameter='40' color='accent' *ngIf='showAvaSpinner == true'></mat-spinner>
+                                </div>
+                                <div id='ava-btns-div'>
+                                    <button mat-icon-button [disabled]='false' disableRipple=true
+                                            [matTooltipPosition]="'right'" matTooltip='Browse image' matTooltipClass='tooltip-general'
+                                            (click)='fileSelector.click()' color='accent'><mat-icon>folder</mat-icon></button>
+                                    <br>
+                                    <button id='ava-frm-mdl-btn' mat-icon-button [disabled]='avatarFile == null || canClickUpdateAva == false' disableRipple=true
+                                            [matTooltipPosition]="'right'" matTooltip='Upload selected image' matTooltipClass='tooltip-general'
+                                            (click)="onUpdateAvatarClick()" color="primary"><mat-icon>cloud_upload</mat-icon></button>
+                                    <br>
+                                    <button mat-icon-button [disabled]='user.avatarTail == null || canClickDeleteAva == false' disableRipple=true
+                                            [matTooltipPosition]="'right'" matTooltip='Delete current avatar' matTooltipClass='tooltip-warning'
+                                            (click)='onDeleteAvatarClick()' color='warn'><mat-icon>delete</mat-icon></button>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" id='td-about-info'>
+                        <mat-form-field class='info-field' appearance='outline' >
+                            <textarea matInput formControlName="info" placeholder="About me" rows='6'></textarea>
+                            <mat-error >
+                                Max. 1000 characters.
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div id='spinner-div'>
+            <mat-spinner diameter='40' [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </div>
+
+        <div id='confirmation-div'>
+            <button mat-raised-button
+                    (click)="cancel()" [disabled]="showSpinner" color="warn">Leave</button>
+            <button mat-raised-button  [disabled]="!formGroup.valid || valuesFieldsUnChanged || showSpinner"
+                    (click)="onConfirmClick()" color="primary">Confirm</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<div id='more-but-div' *ngIf='formGroup != null'>
+    <button mat-button id='more-button' disableRipple=true
+            (click)="onMoreLessClick()" color="primary">{{moreLessButtText}}</button>
+</div>
+
+<mat-card *ngIf='showExtended'>
+    <button mat-raised-button color='warn' (click)='onDeleteUser()'
+    matTooltip='Delete profile' matTooltipClass='tooltip-general' >Delete this profile</button>
+</mat-card>

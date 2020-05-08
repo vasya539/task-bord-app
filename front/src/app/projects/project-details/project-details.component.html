@@ -1,0 +1,38 @@
+<div class="project-details-container">
+    <div class="project-container">
+        <div class="project-name" *ngIf="currentProject != null">
+            <h2>{{currentProject.name}}</h2> 
+            <ng-container *ngIf="access">
+                <button class="delete-btn" mat-raised-button color="warn"
+                    (click)="deleteProject()">delete
+                </button>
+            </ng-container>
+        </div>
+        <div *ngIf="currentProject?.description != null">
+            {{currentProject.description}}
+        </div>
+    </div>
+    <div class="users-container"> 
+        <app-users-on-project [projectId]='projectId' [usersOnProject]='usersToProject' [access]='access'>
+        </app-users-on-project>
+    </div>
+
+    <div class="sprints-container">
+        <ng-container *ngIf="sprintsToProject.length;  else elseBlock">
+            <mat-action-list *ngFor="let sprint of sprintsToProject">
+                <button mat-list-item (click)="goToSprint(sprint.id)">
+                    <div class="sprintInfo">
+                        <span>{{sprint.name}}</span>
+                        <h6>from "{{sprint.startDate | date: 'd MMMM yyyy'}}" to "{{sprint.endDate |  date: 'd MMMM yyyy'}}"
+                        </h6>
+                    </div> 
+                </button>
+            </mat-action-list>
+            
+        </ng-container>
+        <ng-template #elseBlock>
+            <p>No sprints into this project</p>
+        </ng-template>
+    </div>
+
+</div>

@@ -1,0 +1,96 @@
+.comp {
+    display: inline-flex;
+    align-content: center;
+    background-color: darkgrey;
+    border-radius: 5px;
+    margin: 1px;
+}
+
+.rght-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*align-items: center;*/
+    padding: 2px 5px;
+    min-width: 160px;
+}
+
+.bott-row {
+    padding: 0px;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#user-name {
+    margin: 3px auto auto auto;
+}
+
+a {
+    margin: auto auto 3px auto;
+    font-size: 8pt;
+    text-align: left;
+}
+
+p {
+    margin: 1px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    font-weight: bold;
+    color: black;
+}
+
+
+div {
+    /*border: 1px solid yellow;*/
+    height: auto;
+}
+
+
+/* div {
+    border: 1px solid red;
+} */
+
+mat-card {
+    width: 200px;
+    padding: 4px;
+}
+
+.user-content {
+    display: inline-flex;
+    align-content: center;
+}
+
+mat-icon {
+    font-size: 48px;
+    margin: -2px 0 0 -15px;
+}
+
+app-user-ico {
+    margin: auto 5px auto 0;
+}
+
+#ico-link {
+    margin: auto 10px auto auto;
+}
+
+h5 {
+    display: inline;
+}
+
+h4 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.role-div {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+}
+
+.user-role-text {
+    font-size: 9pt;
+}

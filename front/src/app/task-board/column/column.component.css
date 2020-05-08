@@ -1,0 +1,126 @@
+
+:root {
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #0079bf;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: inherit;
+  border: none;
+  background-color: whitesmoke;
+  color: inherit;
+  padding: 5px;
+  cursor: pointer;
+}
+
+:focus {
+  outline-color: #fa0;
+}
+
+.lists-container::-webkit-scrollbar {
+  height: 2.4rem;
+}
+
+.lists-container::-webkit-scrollbar-thumb {
+  background-color: #66a3c7;
+  border: 0.8rem solid #0079bf;
+  border-top-width: 0;
+}
+
+.lists-container {
+  display: flex;
+  align-items: start;
+  padding: 0 0.8rem 0.8rem;
+  overflow-x: auto;
+  height: calc(100vh - 8.6rem);
+}
+
+.list {
+  -webkit-box-flex: 0;
+  padding: 0;
+  flex: 0 0 27rem;
+  display: -webkit-box;
+  display: flex;
+  width: 268px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  background-color: #e4d8e8;
+  border-radius: 8px;
+  height: 30rem;
+}
+
+.listItems {
+  max-height: 550px;
+  width: 16rem;
+  overflow-y: auto;
+  margin-left: 7px;
+}
+
+.list:last-of-type {
+  margin-right: 6px;
+}
+
+.list-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  text-align: left;
+  padding-left: 9px;
+  margin: 10px 5px 10px 10px;
+}
+
+.listHeader {
+  display: flex;
+  position: relative;
+}
+
+.addIcon {
+  top: 7px;
+  display: flex;
+  right: 4px;
+  font-size: 30px;
+  position: absolute;
+
+}
+
+.addIcon:hover {
+  cursor: copy;
+}
+
+.addButton {
+  font-size: 3rem;
+  width: 19%;
+  background-color: #49ff6dab;
+  margin-bottom: 5px;
+  height: 7%;
+  margin-left: 10px;
+  color: #fffdfdf7;
+  margin-top: 5px;
+}
+
+.firstColumn {
+  margin-bottom: 3rem;
+
+}
+
+.mat-card > :last-child:not(.mat-card-footer) {
+  margin-bottom: auto;
+}

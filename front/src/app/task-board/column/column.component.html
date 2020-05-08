@@ -1,0 +1,10 @@
+<div class="list mat-card mat-elevation-z1" >
+  <div class="listHeader">
+    <h3 class="list-title mat-h3">{{columnTitle}}</h3>
+  </div>
+  <div [ngClass]="{'firstColumn':StatusId!==1}" class="listItems">
+    <app-items  [itemsStatus]="StatusId" [parentId]="parentId" [statusTitle]="columnTitle"></app-items>
+  </div>
+  <button (click)="openDialog()" *ngIf="StatusId===1" class="addButton" color="primary" mat-stroked-button>+</button>
+</div>
+

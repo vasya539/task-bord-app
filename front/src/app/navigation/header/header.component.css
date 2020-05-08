@@ -1,0 +1,88 @@
+.myToolbar {
+  display: flex;
+  flex-direction: column;
+
+  z-index: 2;
+}
+
+#logined-user-ico-button {
+  margin: 9px 10px auto auto;
+  padding: 0;
+}
+
+#header-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.navButton{
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  border: none;
+  background-color: #673ab7;
+  outline: 0;
+}
+.appName {
+  position: absolute;
+  top: 15px;
+  left: 195px;
+}
+
+.myAppSidenav {
+  flex: 1;
+  background-color: #eee;
+}
+
+.myContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+.project-title {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+#mainDivider {
+  display: block;
+  margin: 0;
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-top-color: black;
+}
+
+.logout-button-container {
+  text-align: center;
+}
+
+.logout-button {
+  width: 50%;
+}
+
+.logo {
+  position: absolute;
+  top: 7px;
+  left: 110px;
+}
+
+a.menu-button, a:active.menu-button {
+  color: white;
+  cursor: pointer;
+}
+.menu-icon {
+  color: white;
+  cursor: pointer;
+  font-size: 42px;
+  margin: -5px -20px;
+}

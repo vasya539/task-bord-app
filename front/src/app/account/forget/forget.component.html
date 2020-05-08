@@ -1,0 +1,44 @@
+<mat-card class="forget-card">
+  <mat-card-header>
+    <mat-card-title id='title'>Restore password</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    
+    <div *ngIf="apiError != ''" class="alert alert-danger" role="alert">
+      {{ apiError }}
+    </div>
+    
+    <div *ngIf="successMessage != ''" class="alert alert-success" role="alert">
+      {{ successMessage }}
+    </div>
+    
+    <form [formGroup]="forgetForm" class="forget-form">
+      
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="name@email.com" name="email" formControlName="email"  id="email" required>
+        </mat-form-field>
+        <div>
+          <span class="form-help-text" *ngIf="forgetForm.get('email').invalid && forgetForm.get('email').dirty">
+            <span *ngIf="forgetForm.get('email')['errors']['required']">Field can`t be empty.<br></span>
+            <span *ngIf="forgetForm.get('email')['errors']['email']">Field must be correct email.<br></span>
+          </span>
+        </div>
+      
+      <mat-card-actions>
+        
+        <div class='restore-button'>
+        <button mat-raised-button [disabled]="forgetForm.invalid" color="primary" (click)="forget()">
+          Restore password
+        </button>
+        </div>
+
+        <div class='cancel-button'>
+        <button mat-raised-button color="second" (click)="cancel()">
+          Cancel
+        </button>
+        </div>
+      </mat-card-actions>
+      
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+<!--<div class="comp">
+    <app-user-ico [user]='user'></app-user-ico>
+
+    <div class='rght-col'>
+        <p id="user-name">{{user.firstName}} {{user.lastName}}</p>
+        <a href='/'>@{{user.userName}}</a>
+    </div>
+
+</div>
+-->
+
+<mat-card>
+    <mat-card-content>
+        <div class='user-content'>
+            <app-user-ico [user]='user'></app-user-ico>
+            <div>
+                <h4>{{user.firstName}} {{user.lastName}}</h4>
+                <div class='role-div'>
+                    <p class='user-role-text'>{{role}}</p>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

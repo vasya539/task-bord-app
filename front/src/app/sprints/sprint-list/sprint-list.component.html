@@ -1,0 +1,39 @@
+<div *ngIf="data.length === 0 && !isLoading">
+  <h2 class="warn">There are no items in this sprint</h2>
+</div>
+<div *ngIf="data.length != 0 && !isLoading" id="table">
+  <h2>Work items</h2>
+  <ejs-treegrid [dataSource]="data" [treeColumnIndex]='2' childMapping="items" 
+  enableCollapseAll="true" height='100%' width='100%' [enableHover]='true'>
+  <e-columns>
+    <e-column
+      field="id" headerText='Id' width=100>
+    </e-column>
+    <e-column
+      field="storyPoint" headerText='Story Points' width=120>
+    </e-column>
+    <e-column
+      field="name" headerText='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name' width=400>
+      <ng-template #template let-data>
+        <span *ngIf="data.parentId != null">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <mat-icon class="userStory" *ngIf="data.itemType.name === 'User Story'">list_alt</mat-icon>
+        <mat-icon class="bug" *ngIf="data.itemType.name === 'Bug'">bug_report</mat-icon>
+        <mat-icon class="test" *ngIf="data.itemType.name === 'Test'">assignment_late</mat-icon>
+        <mat-icon class="task" *ngIf="data.itemType.name === 'Task'">assignment_turned_in</mat-icon>
+        &nbsp;
+        <a (click)="rowClicked(data.id)" 
+        [ngStyle]="{'font-weight': (data.items && data.items.length > 0) ? 'bold' : 'normal'}">
+        {{data.name}}</a>
+      </ng-template>
+    </e-column>
+    <e-column
+      field="itemType.name" headerText='Type'>
+    </e-column>
+    <e-column
+      field="status.name" headerText='Status'>
+    </e-column>
+    <e-column  headerText='Assigned User' [valueAccessor]='fullNameFormatter'>
+    </e-column>
+  </e-columns>
+  </ejs-treegrid>
+</div>

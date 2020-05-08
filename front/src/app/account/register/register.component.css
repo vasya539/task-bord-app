@@ -1,0 +1,21 @@
+.register-card {
+    display: inline-block;
+    margin: 0px auto;
+}
+
+mat-card-actions {
+    align-content: center;
+}
+
+.register-button {
+    width: 100%;
+    padding: 0px auto 0px auto;
+}
+
+mat-card-header {
+    justify-content: center;
+}
+
+mat-spinner {
+    margin: 0 auto;
+}

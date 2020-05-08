@@ -1,0 +1,52 @@
+<div class="container">
+    <mat-card class="small-card">
+      <mat-card-header>
+        <mat-card-title id='title'>Create Administrator        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="successMessage != ''" class="alert alert-success" role="alert">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="apiError != ''" class="alert alert-danger" role="alert">
+          {{ apiError }}
+        </div>
+        
+        <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+          
+          <div class="row">
+            <label for="userName">Username</label>
+            <div>
+              <input formControlName="userName" type="text" id="userName"
+              placeholder="name">
+              <div class="form-help-text" *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').dirty">
+                <span *ngIf="createUserForm.get('userName')['errors']['required']">Field can`t be empty.<br /></span>
+                <span *ngIf="createUserForm.get('userName')['errors']['minlength']">Enter more 3 character.</span>
+                <span *ngIf="createUserForm.get('userName')['errors']['pattern']">The field contains forbidden characters.</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <label>Email</label>
+            <div >
+              <input formControlName="email" type="text" id="email"
+              placeholder="name@email.com">
+              <div class="form-help-text" *ngIf="createUserForm.get('email').invalid && createUserForm.get('email').dirty">
+                <span *ngIf="createUserForm.get('email')['errors']['required']">Field can`t be empty.<br /></span>
+                <span *ngIf="createUserForm.get('email')['errors']['email']">Field must be correct email.</span>
+              </div>
+            </div>
+          </div>
+          
+          <mat-card-actions>
+            <div>
+              <button mat-raised-button color='primary' [disabled]="createUserForm.invalid">
+              Create
+            </button>
+          </div>
+        </mat-card-actions>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>  
+</div>

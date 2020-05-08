@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~material-design-icons/iconfont/material-icons.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
+
+html {
+    background-color: #ddd;
+}
+
+.mat-dialog-container {
+    background-color: #fafafa;
+}
+
+.my-dialog-window .mat-dialog-container {
+    overflow: hidden;
+    /*zoom: 0.9;*/
+    overflow-x: auto;
+}
+
+.mat-tab-body .mat-tab-body-active {
+    overflow-y: hidden;
+}
+
+.mat-tab-body-active {
+    overflow-y: hidden;
+}
+
+.cdk-drag {
+    zoom: 0.9;
+}
+
+.cdk-drag-placeholder {
+    zoom: 0.9;
+}
+
+.cdk-drag-handle {
+    zoom: 0.9;
+}
+
+.itemStory {
+    border-color: #008e08;
+}
+
+.itemTask {
+    border-color: #f5fb00;
+}
+
+.itemBug {
+}
+
+.itemTest {
+}
+
+.backDropBackground {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+.tooltip-general, .tooltip-warning {
+    font-size: 10pt;
+}
+
+.tooltip-warning {
+    background-color: #f44336; /* color 'warn' in material */
+}
+
+.mat-optgroup-label {
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+}

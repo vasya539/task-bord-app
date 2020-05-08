@@ -1,0 +1,23 @@
+<div class="example-container">
+    <form class="example-form" [formGroup]="projectForm" #f>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="!projectForm.get('name').valid && projectForm.get('name').touched">Name is required</mat-error>
+        </mat-form-field>  
+          <br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="description">
+            <mat-error *ngIf="!projectForm.get('description').valid && projectForm.get('description').touched">Description is required</mat-error>
+        </mat-form-field>
+          <br>  
+
+        <div style="display: inline;">
+            <button mat-raised-button color="primary" [disabled]="!projectForm.valid" type="submit" (click) = OnSaveChanges()>Save</button>
+            <button mat-raised-button (click) = OnClear()>Reset</button>
+            <button mat-raised-button color="warn" (click) = OnCancel()>Cancel</button>
+        </div> 
+    </form>
+</div>

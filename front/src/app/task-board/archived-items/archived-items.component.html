@@ -1,0 +1,55 @@
+<div class="tableBoard">
+  <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+    <ng-container matColumnDef="select">
+      <th *matHeaderCellDef mat-header-cell>
+      </th>
+      <td *matCellDef="let row" mat-cell>
+        <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                      (click)="$event.stopPropagation()"
+                      [aria-label]="checkboxLabel(row)"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell> Id</th>
+      <td *matCellDef="let element" mat-cell>{{element.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell> Name</th>
+      <td *matCellDef="let element" mat-cell><a [routerLink]="['/item/'+element.id]" class="nameLink"
+                                                target="_blank">{{element.name}} </a></td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="description">
+      <th *matHeaderCellDef mat-header-cell> Description</th>
+      <td *matCellDef="let element" mat-cell> {{element.description}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="typeId">
+      <th *matHeaderCellDef mat-header-cell> Type</th>
+      <td *matCellDef="let element" mat-cell> {{element.itemType.name}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr (click)="selection.toggle(row)" *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+  </table>
+  <div class="buttonsBlock">
+    <button (click)="checkToReturn()" [disabled]="!memberService.isOwnerOrMaster()" class="rightButton" color="primary" id="goodButton"
+            mat-raised-button>Return
+    </button>
+    <div class="goToArchive">
+      <a [routerLink]="['../board']" id="archiveLink">Board</a>
+    </div>
+    <button (click)="checkToDelete()" [disabled]="!memberService.isOwnerOrMaster()" class="rightButton" color="warn" id="badButton"
+            mat-raised-button>Delete
+    </button>
+
+  </div>
+</div>

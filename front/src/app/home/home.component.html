@@ -1,0 +1,45 @@
+<div>
+    <mat-card *ngIf='user != null' id='user-info-card'>
+        <mat-card-header>
+            <div mat-card-avatar>
+                <a [routerLink]="['/user', user.userName]">
+                    <img id='avatar' src='http://93.175.202.228:5000/api/avatars/lena.jpg' alt='avatar'>
+                </a>
+            </div>
+            <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+            <mat-card-subtitle>@{{user.userName}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <h5 *ngIf='myProjects != null' >{{myProjects.length}} project(s)</h5>
+            <!-- <h5>0 task(s)</h5> -->
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card id='projects-container'>
+        <mat-card-header>
+            <button mat-flat-button (click)='goToProjects()' color='primary' id='projects-button'>Manage Projects</button>
+        </mat-card-header>
+
+        <mat-card-content>
+            <ul>
+                <li *ngFor='let p of myProjects'>
+                    <a [routerLink]="['/user', p.owner.userName, 'projects', p.id]">
+                            <mat-card class='project-card'>
+                                <mat-card-header>
+                                    <div class='proj-header-div'>
+                                        <mat-card-title>{{p.name}}</mat-card-title>
+                                        <mat-icon *ngIf='itIsMyProject(p)'>star</mat-icon>
+                                    </div>
+                                </mat-card-header>
+
+                                <mat-card-content class='project-card-content'>
+                                    <p class='proj-desc'>{{p.description}}</p>
+                                </mat-card-content>
+                            </mat-card>
+                    </a>
+                </li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+</div>

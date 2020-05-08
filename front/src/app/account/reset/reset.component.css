@@ -1,0 +1,19 @@
+.reset-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    width: 350px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+mat-card-actions {
+    align-content: center;
+}
+mat-card-header {
+    justify-content: center;
+}
+
+mat-spinner {
+    margin: 0 auto;
+}

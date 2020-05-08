@@ -1,0 +1,47 @@
+.forget-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    width: 300px;
+    justify-content: center;
+}
+
+
+mat-card-actions {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+mat-card-header {
+    justify-content: center;
+}
+
+mat-spinner {
+    margin: 0 auto;
+}
+
+mat-form-field{
+    width: 100%;    
+}
+
+.restore-button {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 0px auto 0px auto;
+}
+.cancel-button {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 0px auto 0px auto;
+    margin-left: 10px;
+}
+
+.form-help-text {
+  font-size: 12px;
+}
+
+.form-help-text {
+  color: #ff6c6c;
+}

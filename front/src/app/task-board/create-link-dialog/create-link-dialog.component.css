@@ -1,0 +1,43 @@
+.mat-optgroup-label {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+
+.itemStory {
+  color: #008e08;
+  font-weight: 400;
+}
+
+.itemTask {
+  color: #f1f721;
+  font-weight: 400;
+}
+
+.itemBug {
+  color: red;
+  font-weight: 400;
+}
+
+.itemTest {
+  color: darkviolet;
+  font-weight: 400;
+}
+
+.radioButton {
+  margin: 5px;
+}
+
+.radioGroup {
+  margin: 15px 0;
+  display: flex;
+}
+
+.dialogContent {
+  font-family: Roboto, serif;
+
+}
+
+#radioLabel {
+
+}

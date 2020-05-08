@@ -1,0 +1,69 @@
+.container {
+    display: flex;
+    border: 1px solid rgb(180, 180, 180);
+    flex-wrap: wrap;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:  rgb(240, 240, 255);
+}
+.user-on-project {
+    position: relative;
+    display: flex;
+    margin-right: 10px;
+}
+.but-x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.but-x-disabled {
+    color: rgba(0,0,0,.54);
+}
+.add-user-container {
+    display: flex;
+}
+.users {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color:  rgb(240, 240, 255);
+    box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132), 0 0.6px 1.8px 0 rgba(0,0,0,.108);
+
+}
+.user-filter-mark{
+    font-size: 90%;
+    font-family: Roboto Mono,monospace;
+    padding: 18px 20px;
+}
+.user-container {
+    margin: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.user-item {
+    height: 100%;
+}
+.search {
+    margin: 10px 30px 10px 10px;
+}
+.role {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+.btn-add {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}

@@ -1,0 +1,44 @@
+<div *ngIf="user; else noUser">
+  <mat-card class="small-card">
+    <mat-card-header>
+      <mat-card-title id='title'>{{user.userName}}
+          <button mat-raised-button (click)="rename()" color="primary" class="success">Rename</button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Email: {{user.email}}</p>
+      <p>
+        ID: <input type="text" [value]="user.id" readonly onfocus="this.select();" class="" />
+      </p>
+    </mat-card-content>
+
+    <div *ngIf="successMessage != ''" class="" role="alert">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="apiError != ''" class="" role="alert">
+      {{ apiError }}
+    </div>
+    
+    <mat-card-actions>
+      <button mat-raised-button (click)="setAdminRoles(true)" color="primary" *ngIf="!isAdmin">Promote to Administrator</button>
+      <button mat-button (click)="setAdminRoles(false)" class="warn" *ngIf="isAdmin">Demote from Administrator</button>
+    </mat-card-actions>
+    
+    <mat-card-actions>
+      <button mat-raised-button (click)="setUserRoles(true)" color="primary" *ngIf="!isUser">Promote to User</button>
+      <button mat-button (click)="setUserRoles(false)" class="warn" *ngIf="isUser">Demote from User</button>
+    </mat-card-actions>
+    
+    <div *ngIf='true'>
+      <mat-card-actions>
+        <div *ngIf='true'>
+        <button mat-button (click)="deleteUser()" color='warn'>Delete User</button>
+      </div>
+      </mat-card-actions>
+    </div>
+  </mat-card>  
+  
+</div>
+<ng-template #noUser>
+  <h4>No user</h4>
+</ng-template>

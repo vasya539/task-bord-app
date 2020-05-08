@@ -1,0 +1,13 @@
+<div class='ico'>
+    <a id='ico-link' mat-icon-button [color]="disableLink ? null: 'primary'" [class.disabled]='disableLink' [routerLink]="['/user', user.userName]" disableRipple=true>
+        <!-- <mat-icon>account_circle</mat-icon> -->
+        <div *ngIf='small' class='small-ico letters-div'>
+            <p class='letters' >{{firstLetters()}}</p>
+        </div>
+        <div *ngIf='!small' class='big-ico letters-div'>
+            <p class='letters'>{{firstLetters()}}</p>
+        </div>
+        <img *ngIf='small && user.avatarTail != null' class='small-ico' src='{{getAvaPath()}}' alt='avatar' onerror="this.hidden = true">
+        <img *ngIf='!small && user.avatarTail != null' class='big-ico' src='{{getAvaPath()}}' alt='avatar' onerror="this.hidden = true">
+    </a>
+</div>

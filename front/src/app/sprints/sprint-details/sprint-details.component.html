@@ -1,0 +1,35 @@
+
+<div class="main-div" fxLayout="row" fxLayoutAlign="stretch">
+    <mat-card>
+        <mat-card-title>
+            {{sprint.name}}
+        </mat-card-title>
+        <mat-card-content>
+            <div class="card-columns" fxLayout="row" xLayoutAlign="space-between" fxLayoutGap="15px">
+                <div class="card-column-desc" fxFlex="50%">
+                    <h3>Description:</h3>
+                    <p>{{sprint.description}}</p>
+                </div>
+                <div class="card-column-date" fxFlex="50%">
+                    <p class="right"><mat-icon>directions_run</mat-icon> Start Date: {{sprint.startDate | date}}</p>
+                    <p class="right"><mat-icon>alarm_on</mat-icon> End Date: {{sprint.endDate | date}}</p>
+                    <p class="right"><mat-icon>event</mat-icon> Duration: {{duration}} 
+                        <span *ngIf="duration < 2">day</span>
+                        <span *ngIf="duration >= 2">days</span>
+                    </p>
+                </div>
+            </div>
+            <div class="sprint-status" *ngIf="status === 'planned'">
+                <p class="planned">Future</p>
+            </div>
+            <div class="sprint-status" *ngIf="status === 'current'">
+                <p class="current">Current</p>
+            </div>
+            <div class="sprint-status" *ngIf="status === 'completed'">
+                <p class="completed">Completed</p>
+            </div>            
+        </mat-card-content>
+        <button class="back" mat-button (click)="OnBackClick()">Back</button>
+        <button class="change" mat-button (click)="OnChangeClick()">Change</button>
+    </mat-card>
+</div>
