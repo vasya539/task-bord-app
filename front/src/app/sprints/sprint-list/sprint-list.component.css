@@ -1,3 +1,7 @@
+.sprint-table {
+  margin: 20px !important;
+  height: auto;
+}
 h2.warn {
     margin: 10px;
     color: red;
