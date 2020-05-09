@@ -87,16 +87,11 @@
                     (click)="cancel()" [disabled]="showSpinner" color="warn">Leave</button>
             <button mat-raised-button  [disabled]="!formGroup.valid || valuesFieldsUnChanged || showSpinner"
                     (click)="onConfirmClick()" color="primary">Confirm</button>
+            <button mat-raised-button color='warn'
+                    (click)='onDeleteUser()'
+                    matTooltip='Delete profile'
+                    matTooltipClass='tooltip-general'
+                    class="delete-user">Delete this profile</button>
         </div>
     </mat-card-actions>
-</mat-card>
-
-<div id='more-but-div' *ngIf='formGroup != null'>
-    <button mat-button id='more-button' disableRipple=true
-            (click)="onMoreLessClick()" color="primary">{{moreLessButtText}}</button>
-</div>
-
-<mat-card *ngIf='showExtended'>
-    <button mat-raised-button color='warn' (click)='onDeleteUser()'
-    matTooltip='Delete profile' matTooltipClass='tooltip-general' >Delete this profile</button>
 </mat-card>
