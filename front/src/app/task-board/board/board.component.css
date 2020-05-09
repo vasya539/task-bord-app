@@ -10,7 +10,6 @@
 
 .board {
   position: relative;
-  zoom: 0.9;
   font-family: Roboto, serif;
 }
 
@@ -128,30 +127,27 @@ body {
 
 }
 
-.addButtonLeft {
-  margin-left: 35rem;
-  margin-right: 1rem;
-}
-
 #addButton {
   font-size: 90px;
   color: #f5f5f5;
 }
 
 .buttonAndSprints {
+  align-items: center;
+  background: white;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 20px;
+}
+.button-wrapper {
   display: flex;
-  height: 50px;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 500px;
 }
 
 #selectSprint {
   font-size: 16px;
-  position: absolute;
-  top: 3px;
-}
-
-
-.createItemButton {
-
 }
 
 #sprintLabel {
@@ -173,47 +169,35 @@ body {
   border-top: none;
 }
 
-.goToArchive {
-  margin-left: 13rem;
-  margin-top: 5px;
-  font-size: 20px;
-}
-
 #archiveLink {
   font-size: 25px;
   text-decoration: none;
   color: black;
-  padding: 5px 8px 5px 8px;
   border-radius: 7px;
+  padding: 5px;
   background-color: #a7a7a7;
   font-family: Roboto, serif;
 }
 
 .createButton {
-  font-size: 4rem;
+  padding: 5px 0;
+  font-size: 2.5rem;
   background-color: #a7a7a7;
-  padding: 5px 8px 5px 8px;
-  font-weight: 300;
 }
 
 #refreshButton {
-  margin-right: 5px;
   font-size: 46px;
   cursor: pointer;
   background-color: #a7a7a7;
   border-radius: 7px;
-
 }
 
 .blured {
-  -webkit-filter: blur(15px);
+  filter: blur(15px);
 }
 
 .roleReminder {
-  margin: 0px auto;
-  margin-bottom: 8px;
   font-size: 19pt;
   background-color: #673ab761;
   border-radius: 8px;
-  padding: 5px 16px;
 }
