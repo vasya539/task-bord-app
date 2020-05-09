@@ -23,12 +23,10 @@ button {
     background: #673ab7;
 }
 mat-card {
-    width: 96%;
-    height: 100%;  
+    width: 100%;
+    margin: 20px;
 }
 .main-div{
-    margin-top: 10px;
-    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,4 +64,9 @@ p.planned, p.completed {
     background-color: #EAEAEA;
     color: rgb(51, 51, 51);
     padding: 1px 4px;
+}
+
+.actions button {
+    position: relative;
+    margin: 5px;
 }

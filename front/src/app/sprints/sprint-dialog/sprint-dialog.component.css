@@ -9,3 +9,18 @@ h3 {
     margin: 4px 8px;
     border: 1px solid #333;
 }
+
+.sprint-dialog {
+    background: white;
+    margin: 20px;
+    border-radius: 4px;
+    padding: 20px 0;
+}
+
+.actions {
+    margin: 20px;
+}
+
+.example-form mat-form-field {
+    margin-bottom: 20px;
+}

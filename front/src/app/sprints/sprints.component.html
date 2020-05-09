@@ -1,17 +1,19 @@
-<mat-form-field #formField>
-  <mat-label>Sprints</mat-label>
-  <mat-select [disabled]=disabled [value]='selectedSprintId'>
+<div class="sprint-forms">
+  <h2>Sprints</h2>
+  <mat-form-field #formField>
+    <mat-select [disabled]=disabled [value]='selectedSprintId'>
 
-    <mat-option (click)="this.LoadSprintItems(sprint)"
-                *ngFor="let sprint of sprints; let i = index;"
-                [value]="sprint.id">
-      {{sprint.name}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-  <button mat-button [disabled]=disabled (click)="OnEditClick(selectedSprint)">Edit</button>
-  <button [disabled]=disabled mat-button (click)="OnNewSprintClick()">Add New</button>
-  <button [disabled]=disabled mat-button (click)="OnDetailsClick()">Details</button>
-  <button [disabled]=disabled mat-button (click)="OnDeleteClick()">Delete</button>
-  <button [disabled]=disabled mat-button (click)="OnBoardViewClick()">Board View</button>
+      <mat-option (click)="this.LoadSprintItems(sprint)"
+                  *ngFor="let sprint of sprints; let i = index;"
+                  [value]="sprint.id">
+        {{sprint.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <button mat-button [disabled]=disabled (click)="OnEditClick(selectedSprint)">Edit</button>
+    <button [disabled]=disabled mat-button (click)="OnNewSprintClick()">Add New</button>
+    <button [disabled]=disabled mat-button (click)="OnDetailsClick()">Details</button>
+    <button [disabled]=disabled mat-button (click)="OnDeleteClick()">Delete</button>
+    <button [disabled]=disabled mat-button (click)="OnBoardViewClick()">Board View</button>
+</div>
 <router-outlet></router-outlet>
