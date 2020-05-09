@@ -1,7 +1,7 @@
 <mat-card class="register-card">
 
     <mat-card-header>
-        <mat-card-title id='title'>Log In</mat-card-title>
+        <mat-card-title id='title'>Registration</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
@@ -22,7 +22,7 @@
                 <input matInput placeholder="Confirm password" [(ngModel)]="confirmPassword" type="password" name="confirmPassword" required>
             </mat-form-field>
         </form>
-        
+
         <mat-spinner diameter='40' [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
 
@@ -31,8 +31,9 @@
             <button mat-raised-button (click)="register()" color="primary">Register</button>
         </div>
     </mat-card-actions>
+    <p>You can also <a routerLink='/account/login'>log in</a> using existing account.</p>
 </mat-card>
 
-<p>You can also <a routerLink='/account/login'>log in</a> using existing account.</p>
+
 
 

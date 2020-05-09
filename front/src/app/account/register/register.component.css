@@ -1,6 +1,7 @@
 .register-card {
     display: inline-block;
-    margin: 0px auto;
+    margin: 50px auto;
+    min-width: 300px;
 }
 
 mat-card-actions {
