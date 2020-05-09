@@ -11,10 +11,11 @@
     display: flex;
     margin-right: 10px;
 }
+
 .but-x {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
 }
 .but-x-disabled {
@@ -51,16 +52,21 @@
     margin: 10px 30px 10px 10px;
 }
 .role {
+    background: white;
     width: 95%;
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin: 5px 0;
     position: relative;
     bottom: 0;
     right: 0;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+}
 
+.role mat-select {
+    padding: 5px;
+    font-size: 15px;
 }
 .btn-add {
     display: flex;
