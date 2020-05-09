@@ -1,15 +1,8 @@
-<div *ngIf="loaded  && memberService.allLoaded" [ngClass]="{'blured':blured}" cdkDropListGroup class="board">
+<div *ngIf="loaded && memberService.allLoaded" [ngClass]="{'blured':blured}" cdkDropListGroup class="board-container">
   <div class="buttonAndSprints">
-    <div class="selectButton" class="addButtonLeft">
-      <span (click)="refresh()" [matTooltip]="'Refresh'" class="material-icons" id="refreshButton"
-      >refresh
-      </span>
-      <button (click)="openCreateDialog()" [disabled]="memberService.isNotMemberOfTeam()" [matTooltip]="'Add new item'"
-              class="createButton"
-              mat-flat-button>+
-      </button>
-    </div>
-    <div class="selectButton">
+    <div class="button-wrapper">
+      <div (click)="refresh()" [matTooltip]="'Refresh'" class="material-icons" id="refreshButton">refresh</div>
+
       <mat-form-field id="selectSprint">
         <mat-label id="sprintLabel">Sprint</mat-label>
         <mat-select (selectionChange)="changeSprint(selectedSprint)" [(value)]="selectedSprint">
@@ -18,24 +11,31 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="goToArchive">
+
+      <button (click)="openCreateDialog()" [disabled]="memberService.isNotMemberOfTeam()" [matTooltip]="'Add new item'"
+                class="createButton"
+                mat-flat-button>+
+      </button>
+
       <a [routerLink]="['../archived']" id="archiveLink">Archive</a>
 
-    </div>
-    <div class="roleReminder">
-      <b>{{this.memberService.currentMember.role.name}}</b>
+      <!-- <div class="roleReminder">
+        <b>{{this.memberService.currentMember.role.name}}</b>
+      </div> -->
     </div>
   </div>
+
   <div class="stories">
     <div *ngFor="let story of userStories" class="userStories">
       <app-story [story]="story"></app-story>
     </div>
+
     <div *ngIf="(changed%2)===1;else unset">
       <div class="userStories">
         <app-story [story]="nullStory"></app-story>
       </div>
     </div>
+
     <ng-template #unset>
       <app-story [story]="nullStory"></app-story>
     </ng-template>
