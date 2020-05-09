@@ -4,13 +4,16 @@
     flex-direction: column;
 }
 .project-container, .users-container, .sprints-container{
-    margin-top: 30px;
+    margin-top: 20px;
     display: block;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     background-color:  rgba(255, 255, 255, 0.7);
     box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132), 0 0.6px 1.8px 0 rgba(0,0,0,.108);
+}
+.project-container {
+  padding-bottom: 30px;
 }
 .sprints-container {
   margin-bottom: 10px;
@@ -23,8 +26,12 @@
 .project-name {
     display: flex;
     justify-content: space-between;
+    align-items: start;
 }
-legend { 
+.project-name h2 {
+  margin-top: 5px;
+}
+legend {
     display: flex;
     padding-left: 2px;
     padding-right: 2px;

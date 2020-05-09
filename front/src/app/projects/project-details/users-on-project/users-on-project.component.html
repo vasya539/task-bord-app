@@ -1,11 +1,13 @@
 <div class="container">
     <div *ngFor="let up of usersOnProject">
         <div class="user-on-project">
-            <app-user [user]='up.user'></app-user>
+            <app-user [user]='up.user' class="app-user"></app-user>
+
             <ng-container *ngIf="access">
                 <ng-container *ngIf="up.userRoleId === 1; else isOwner">
                     <mat-icon disabled class="but-x but-x-disabled">highlight_off</mat-icon>
                 </ng-container>
+
                 <ng-template #isOwner>
                     <mat-icon class="but-x" (click)="deleteUserFromProject(up)">
                         highlight_off</mat-icon>
