@@ -30,6 +30,12 @@ namespace WebApi.BLs
             _accountRepository = accountRepository;
             _userManager = userManager;
         }
+        public async Task<bool> CheckPassword(string password)
+        {
+            return password.Any((ch) => char.IsUpper(ch)) && 
+                password.Any((ch) => char.IsLower(ch) && 
+                password.Any((ch) => char.IsDigit(ch)));
+        }
         public async Task<bool> CheckPassword(User user, string password)
         {
             return await _accountRepository.CheckPassword(user, password);
