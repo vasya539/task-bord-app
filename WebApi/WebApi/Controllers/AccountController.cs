@@ -71,6 +71,8 @@ namespace WebApi.Controllers
 
             try
             {
+                if (!await _accountBl.CheckPassword(newUserData.Password))
+                    return BadRequest("Password is not valid");
                 await _accountBl.CreateAsync(newUserData);
                 await _accountBl.AddToRoleAsync(await _accountBl.GetUserByName(newUserData.Name), "User");
             }

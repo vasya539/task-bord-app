@@ -10,6 +10,7 @@ namespace WebApi.BLs.Interfaces
 {
     public interface IAccountBl
     {
+        Task<bool> CheckPassword(string password);
         Task<bool> CheckPassword(User user, string password);
         Task<User> GetUserByName(string userName);
         Task<User> GetUserById(string id);
