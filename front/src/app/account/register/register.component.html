@@ -5,21 +5,45 @@
     </mat-card-header>
 
     <mat-card-content>
-        <form class="register-form">
+        <form class="register-form" [formGroup]="regUserForm">
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Username" [(ngModel)]="userName" name="username" required>
+                <input matInput placeholder="Username" formControlName="userName" [(ngModel)]="userName" name="username" required>
+                <div class="form-help-text" *ngIf="regUserForm.get('userName').invalid && regUserForm.get('userName').dirty">
+                    <span *ngIf="regUserForm.get('userName')['errors']['required']">Field can`t be empty.<br></span>
+                    <span *ngIf="regUserForm.get('userName')['errors']['minlength']">Enter more 3 character.<br></span>
+                    <span *ngIf="regUserForm.get('userName')['errors']['pattern']">The field contains forbidden characters.<br></span>
+                </div>
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="E-mail" [(ngModel)]="email" name="email" required>
+                <input matInput placeholder="E-mail" formControlName="email" [(ngModel)]="email" name="email" required>
+                <div class="form-help-text" *ngIf="regUserForm.get('email').invalid && regUserForm.get('email').dirty">
+                    <span *ngIf="regUserForm.get('email')['errors']['required']">Field can`t be empty.<br></span>
+                    <span *ngIf="regUserForm.get('email')['errors']['email']">Field must be correct email.<br></span>
+                </div>
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                <input matInput placeholder="Password" formControlName="password" [(ngModel)]="password" type="password" name="password" required>                
+                <div class="form-help-text" *ngIf="regUserForm.get('password').invalid && regUserForm.get('password').dirty">
+                    <span *ngIf="regUserForm.get('password')['errors']['required']">Field can`t be empty.<br></span>
+                    <span *ngIf="regUserForm.get('password')['errors']['minlength']">Enter more 8 character.<br></span>
+                    <span *ngIf="regUserForm.get('password')['errors']['pattern']">The field contains forbidden characters.<br></span>
+                </div>
+                <span *ngIf="this.noDigit">Password have to contain some digit character.<br></span>
+                <span *ngIf="this.noUpper">Password have to contain some upper character.<br></span>
+                <span *ngIf="this.noLower">Password have to contain some lower character.<br></span>
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Confirm password" [(ngModel)]="confirmPassword" type="password" name="confirmPassword" required>
+                <input matInput placeholder="Confirm password" formControlName="confirmPassword" [(ngModel)]="confirmPassword" type="password" name="confirmPassword" required>
+                <div class="form-help-text" *ngIf="regUserForm.get('confirmPassword').invalid && regUserForm.get('confirmPassword').dirty">
+                    <span *ngIf="regUserForm.get('confirmPassword')['errors']['required']">Field can`t be empty.<br></span>
+                    <span *ngIf="regUserForm.get('confirmPassword')['errors']['minlength']">Enter more 8 character.<br></span>
+                    <span *ngIf="regUserForm.get('confirmPassword')['errors']['pattern']">The field contains forbidden characters.<br></span>
+                    
+                </div>
+                <span *ngIf="regUserForm.hasError('notSame')">Passwords don`t match.<br></span>
             </mat-form-field>
         </form>
 
