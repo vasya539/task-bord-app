@@ -136,14 +136,19 @@ body {
   align-items: center;
   background: white;
   border-radius: 4px;
-  margin: 20px;
-  padding: 20px;
+  margin-top: 20px;
+  width: 500px;
 }
 .button-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-around;
   max-width: 500px;
+}
+
+.board-actions {
+  display: flex;
+  justify-content: center;
 }
 
 #selectSprint {
@@ -174,7 +179,7 @@ body {
   text-decoration: none;
   color: black;
   border-radius: 7px;
-  padding: 5px;
+  padding: 10px;
   background-color: #a7a7a7;
   font-family: Roboto, serif;
 }

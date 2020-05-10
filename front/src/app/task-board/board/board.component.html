@@ -1,27 +1,29 @@
 <div *ngIf="loaded && memberService.allLoaded" [ngClass]="{'blured':blured}" cdkDropListGroup class="board-container">
-  <div class="buttonAndSprints">
-    <div class="button-wrapper">
-      <div (click)="refresh()" [matTooltip]="'Refresh'" class="material-icons" id="refreshButton">refresh</div>
+  <div class="board-actions">
+    <div class="buttonAndSprints">
+      <div class="button-wrapper">
+        <div (click)="refresh()" [matTooltip]="'Refresh'" class="material-icons" id="refreshButton">refresh</div>
 
-      <mat-form-field id="selectSprint">
-        <mat-label id="sprintLabel">Sprint</mat-label>
-        <mat-select (selectionChange)="changeSprint(selectedSprint)" [(value)]="selectedSprint">
-          <mat-option *ngFor="let u of allSprints" [routerLink]="['../../' + u.id+ '/board']" [value]="u">
-            {{u.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field id="selectSprint">
+          <mat-label id="sprintLabel">Sprint</mat-label>
+          <mat-select (selectionChange)="changeSprint(selectedSprint)" [(value)]="selectedSprint">
+            <mat-option *ngFor="let u of allSprints" [routerLink]="['../../' + u.id+ '/board']" [value]="u">
+              {{u.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <button (click)="openCreateDialog()" [disabled]="memberService.isNotMemberOfTeam()" [matTooltip]="'Add new item'"
-                class="createButton"
-                mat-flat-button>+
-      </button>
+        <button (click)="openCreateDialog()" [disabled]="memberService.isNotMemberOfTeam()" [matTooltip]="'Add new item'"
+                  class="createButton"
+                  mat-flat-button>+
+        </button>
 
-      <a [routerLink]="['../archived']" id="archiveLink">Archive</a>
+        <a [routerLink]="['../archived']" id="archiveLink">Archive</a>
 
-      <!-- <div class="roleReminder">
-        <b>{{this.memberService.currentMember.role.name}}</b>
-      </div> -->
+        <!-- <div class="roleReminder">
+          <b>{{this.memberService.currentMember.role.name}}</b>
+        </div> -->
+      </div>
     </div>
   </div>
 
