@@ -66,8 +66,6 @@ register(): void
     
 private checkForValid(group: FormGroup):boolean{
   const pass = group.value.password+"";
-  const confirm = group.value.confirmPassword+"";
-
 
   if(!pass.match(/[A-Z]/))  {
     this.noUpper= true;
@@ -87,10 +85,6 @@ private checkForValid(group: FormGroup):boolean{
 private comparePassword(group: FormGroup) {
   const pass = group.value.password+"";
   const confirm = group.value.confirmPassword+"";
-
-
-  console.log(this);
-  console.log("========================================");
 
   return pass === confirm ? null : { notSame: true };
 }
