@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
       this.confirmPassword
     )
   ).subscribe(data => this.router.navigate(['/login']), error => this.handleError(error));
-  this.router.navigateByUrl('/home');
 }
 
 private handleError(error: any) {
